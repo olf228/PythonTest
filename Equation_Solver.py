@@ -6,27 +6,39 @@ import math
 
 def equationSolver(stringParam):
 
-    inputString = str(stringParam)
-    print("InputString: " + inputString)
-
-    # Split the equation string at every blank symbol and output it
-    splitted_equation = inputString.split(" ")
-    print("SplittedString: " + str(splitted_equation))
+    # Split the equation string at every blank symbol
+    splitted_equation = stringParam.split(" ")
 
     # Save the coefficients and the mathematical operator, which shall either be a sum or a subtraction
     a = float(splitted_equation[0])
     operator = splitted_equation[2]
     b = float(splitted_equation[3])
 
+    # Try to solve the equation. If there is an error there needs to be an exception handling
     try:
         if operator == "+":
             result = math.sqrt(-b/a)
-        else:
+        elif operator == "-":
             result = math.sqrt(b/a)
+        else:
+            # If the operator is neither plus or minus there should be thrown the same exception as ZeroDivision
+            raise ZeroDivisionError
+        print("Solution: " + str(result))
 
-        print(inputString + " solved for x equals: " + str(result))
-    except:
-        print("Error")
+    except ValueError:
+        # There is no real solution of the equations with real numbers, but with imaginary numbers
+        print("no real solution")
 
+    except ZeroDivisionError:
+        # if there are infinite solutions
+        if a == 0.0 and b == 0.0:
+           print("all real numbers are solutions")
 
+        # if there is no solution or the mathematical operator is neither plus nor minus
+        else:
+            print("no solution")
+
+# Start the script
 equationSolver(str(input()))
+
+# eof
