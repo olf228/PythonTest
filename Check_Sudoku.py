@@ -1,6 +1,7 @@
 '''
    Iterate through the list and count the appearance of a number. If it occurs more than once or the number in at the index is out of range show an error.
-   The Sudoku datastructure is defined through a list, which contains lists as elements. These elements represent an field, in which there mustn't appear one number twice or more
+   The Sudoku datastructure is defined through a list, which contains lists as elements.
+   These elements represent an field, in which there mustn't appear one number twice or more.
    These fields are represented by lists, which contain the numbers from the left to the right.
 '''
 def check_sudo(sudo):
